@@ -1,3 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import 'tailwindcss';
+
+@theme {
+    --color-bucks-primary: #970A14;
+    --color-bucks-secondary: #ff5461;
+    --color-bucks-tertiary:#BB0613
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
