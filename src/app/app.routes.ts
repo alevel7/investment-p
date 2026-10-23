@@ -4,7 +4,6 @@ import { AuthBasePage } from './auth/auth-base-page/auth-base-page';
 export const routes: Routes = [
     {
         path: '',
-        component: AuthBasePage,
         loadChildren: () => import('./auth/auth-route').then((m) => m.AUTH_ROUTES),
     },
     {
