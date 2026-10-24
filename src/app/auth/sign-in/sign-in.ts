@@ -1,14 +1,14 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { AuthBasePage } from '../auth-base-page/auth-base-page';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { form, FormField } from '@angular/forms/signals';
 import { LoginInterface, loginSchema } from './sign-in.model';
 
 
 
 @Component({
-  imports: [MatIconModule, AuthBasePage, FormField],
+  imports: [MatIconModule, AuthBasePage, FormField, RouterLink],
   selector: 'app-sign-in',
   styleUrl: './sign-in.css',
   templateUrl: './sign-in.html',
@@ -37,6 +37,6 @@ export class SignIn {
     this.previewPassword.set(!this.previewPassword());
   }
   signIn(){
-    this.router.navigate(['/verification']);
+    this.router.navigate(['/auth/verification']);
   }
 }
