@@ -35,6 +35,8 @@ const otpFormSchema = schema<OtpFormInterface>((rootPath) => {
               <div class="w-full flex justify-center gap-1">
                 @for (t of otpForm.otp; track $index) {
                   <input [id]=" 'otp' + $index" type="text" [formField]="otpForm.otp[$index]"
+                  (input)="focusNextOtp($event, $index)"
+                  (keydown)="focusPreviousOtpOnBackspace($event, $index)"
                   class="bg-gray-100 p-3 rounded-lg size-12 focus:ring-2 focus:ring-bucks-primary focus:outline-none" />
                 }
               </div>
@@ -78,5 +80,23 @@ export class OtpValidation {
     const otpValue = this.otpModel().otp.join('');
     this.emitOtp.emit(otpValue);
     // navigate to dashboard
+  }
+
+  focusNextOtp(event: Event, index: number) {
+    const inputElement = event.target as HTMLInputElement;
+
+    if (inputElement.value.length === 1 && index < this.otpModel().otp.length - 1) {
+      const nextInput = document.getElementById(`otp${index + 1}`) as HTMLInputElement | null;
+      nextInput?.focus();
+    }
+  }
+
+  focusPreviousOtpOnBackspace(event: KeyboardEvent, index: number) {
+    const inputElement = event.target as HTMLInputElement;
+
+    if (event.key === 'Backspace' && inputElement.value.length === 0 && index > 0) {
+      const previousInput = document.getElementById(`otp${index - 1}`) as HTMLInputElement | null;
+      previousInput?.focus();
+    }
   }
 }

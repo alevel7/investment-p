@@ -9,13 +9,13 @@
 
         <form class="mt-10 flex flex-col gap-4">
             <div class="w-full">
-                <p class="text-gray-800 mb-1 font-semibold">Email Address</p>
+                <p class="text-gray-500 mb-1 font-semibold">Email Address</p>
                 <input type="email" id="" placeholder="Enter your email address" [formField]="loginForm.email"
                     class="border border-gray-400 text-lg text-gray-800 p-2 w-full rounded-lg placeholder:text-sm placeholder:text-gray-400 focus:ring-2 focus:ring-bucks-primary focus:outline-none">
             </div>
 
             <div class="w-full">
-                <p class="text-gray-800 mb-1 font-semibold">Password</p>
+                <p class="text-gray-500 mb-1 font-semibold">Password</p>
                 <div class="relative ">
                     <input [type]="previewPassword() ? 'text' : 'password'" [formField]="loginForm.password"
                         placeholder="Enter your password"
@@ -52,7 +52,7 @@
 
 
         <div class="flex w-full justify-center">
-            <p class="font-semibold">Don't have an account? <a href="" class="text-bucks-primary cursor-pointer">Create
+            <p class="font-semibold">Don't have an account? <a routerLink="/auth/sign-up" class="text-bucks-primary cursor-pointer">Create
                     Account</a></p>
         </div>
     </div>
