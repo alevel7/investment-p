@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { AuthBasePage } from '../auth-base-page/auth-base-page';
 import { form, FormField, FormRoot } from '@angular/forms/signals';
 import { CreateIndividualProfileInterface, createIndividualProfileSchema } from './create-profile.model';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [AuthBasePage, FormField, FormRoot],
@@ -10,6 +11,8 @@ import { CreateIndividualProfileInterface, createIndividualProfileSchema } from 
   templateUrl: './create-profile.html',
 })
 export class CreateProfile {
+
+  router = inject(Router);
   
   private createProfileModel = signal<CreateIndividualProfileInterface>({
     companyName: '',
@@ -27,6 +30,7 @@ export class CreateProfile {
   createProfileForm = form(this.createProfileModel, createIndividualProfileSchema);
 
   createProfile() {
+    this.router.navigate(['/auth/sign-in']);
     if (this.createProfileForm().invalid()) {
       console.log('Form is invalid');
       return;

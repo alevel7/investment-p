@@ -37,6 +37,6 @@ export class SignIn {
     this.previewPassword.set(!this.previewPassword());
   }
   signIn(){
-    this.router.navigate(['/auth/verification']);
+    this.router.navigate(['/dashboard']);
   }
 }
