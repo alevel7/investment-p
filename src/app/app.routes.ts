@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { Navigation } from './shared/component/navigation/navigation';
+import { PartnerAnalytics } from './modules/analytics/partner-analytics/partner-analytics';
 
 export const routes: Routes = [
     {
@@ -13,15 +14,19 @@ export const routes: Routes = [
             {
                 path: 'dashboard',
                 loadComponent: () => import('./modules/dashboard/overview/overview').then((m) => m.Overview),
+                data: { title: 'Dashboard' },
+                title: 'Dashboard',
             },
             // {
             //     path: "kyb",
             //     loadChildren: () => import('./kyb/kyb-route').then((m) => m.KYB_ROUTES),
             // },
-            // {
-            //     path: "analytics",
-            //     component: AuthBasePage,
-            // },
+            {
+                path: "analytics",
+                component: PartnerAnalytics,
+                data: { title: 'Analytics' },
+                title: 'Analytics',
+            },
             // {
             //     path: "settings",
             //     loadChildren: () => import('./settings/settings-route').then((m) => m.SETTINGS_ROUTES),
